@@ -4,16 +4,16 @@ services:
   db:
     image: 'postgres:latest'
     environment:
-      POSTGRES_USER: 8279_superuser 
-      POSTGRES_PASSWORD: 8279_superuser 
-      POSTGRES_DB: 8279_supertoken
+      POSTGRES_USER: supertokens_user 
+      POSTGRES_PASSWORD: somePassword 
+      POSTGRES_DB: supertokens
     ports:
-      - 5432:5432
+      - 8279:5432
     networks:
       - app_network
     restart: unless-stopped
     healthcheck:
-      test: ['CMD', 'pg_isready']
+      test: ['CMD', 'pg_isready -d supertokens -U supertokens_user']
       interval: 5s
       timeout: 5s
       retries: 5
@@ -25,7 +25,7 @@ services:
     ports:
       - 3567:3567
     environment:
-      POSTGRESQL_CONNECTION_URI: "postgresql://8279_superuser:8279_superuser@db:5432/8279_supertoken"
+      POSTGRESQL_CONNECTION_URI: "postgresql://supertokens_user:somePassword@db:5432/supertokens"
     networks:
       - app_network
     restart: unless-stopped
