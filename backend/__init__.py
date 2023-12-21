@@ -1,5 +1,5 @@
 from supertokens_python import init, InputAppInfo, SupertokensConfig
-from supertokens_python.recipe import emailpassword, session
+from supertokens_python.recipe import emailpassword, session, dashboard
 
 init(
     app_info=InputAppInfo(
@@ -17,6 +17,7 @@ init(
     framework='flask',
     recipe_list=[
         session.init(), # initializes session features
-        emailpassword.init()
+        emailpassword.init(),
+        dashboard.init(),
     ]
 )
