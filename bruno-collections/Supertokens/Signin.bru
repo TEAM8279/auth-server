@@ -1,0 +1,26 @@
+meta {
+  name: Signin
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{apiBasePath}}/auths/signin
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "formFields": [
+      {
+        "id": "email",
+        "value": "johndoe@gmail.com"
+      },
+      {
+        "id": "password",
+        "value": "testPass123"
+      }
+    ]
+  }
+}
